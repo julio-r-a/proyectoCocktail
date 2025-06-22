@@ -1,0 +1,40 @@
+[
+  {
+    "nombre": "Pisco Sour",
+    "imagen": "https://media.istockphoto.com/id/1206887058/photo/pisco-sour.jpg?s=2048x2048&w=is&k=20&c=qEisQURPyI8_U4mPHlbTRHXGx6mZzr-zOCllxAxicEg=",
+    "ingredientes": [
+      "2 oz de pisco",
+      "1 oz de jugo de limón",
+      "1 oz de jarabe de goma",
+      "1 clara de huevo",
+      "Hielo",
+      "3 gotas de amargo de angostura"
+    ],
+    "instrucciones": "Agita el pisco, jugo de limón, jarabe y clara de huevo en una coctelera con hielo. Sirve colado en una copa y decora con el amargo de angostura."
+  },
+  {
+    "nombre": "Chilcano",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/0/09/Chilcano_de_pisco_-_Peru.jpg",
+    "ingredientes": [
+      "2 oz de pisco",
+      "1 oz de jugo de limón",
+      "Ginger ale",
+      "Hielo",
+      "Gotas de amargo de angostura"
+    ],
+    "instrucciones": "En un vaso alto con hielo, mezcla el pisco, el jugo de limón y el ginger ale. Añade unas gotas de angostura y sirve."
+  },
+  {
+    "nombre": "Algarrobina",
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Algarrobina_cocktail.jpg",
+    "ingredientes": [
+      "2 oz de pisco",
+      "1 oz de jarabe de algarrobina",
+      "1 oz de leche evaporada",
+      "1 yema de huevo",
+      "1 oz de jarabe de azúcar",
+      "Hielo"
+    ],
+    "instrucciones": "Licúa todos los ingredientes con hielo hasta obtener una mezcla cremosa. Sirve en copa y decora si lo deseas."
+  }
+]
