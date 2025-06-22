@@ -6,13 +6,9 @@ const nombreCoctel = document.getElementById('nombre-coctel');
 const imagenCoctel = document.getElementById('imagen-coctel');
 const ingredientesLista = document.getElementById('ingredientes');
 const instrucciones = document.getElementById('instrucciones');
-const listaHistorial = document.getElementById('lista-historial');
+const listaHistorialDesktop = document.getElementById('lista-historial');
+const listaHistorialMovil = document.getElementById('lista-historial-movil');
 
-const sidebar = document.getElementById('sidebar');
-const btnToggleSidebar = document.getElementById('btn-toggle-sidebar');
-const overlay = document.getElementById('overlay');
-
-// Cargar los cócteles peruanos del JSON local
 fetch('json/cocteles-peruanos.json')
   .then(res => res.json())
   .then(data => {
@@ -24,19 +20,7 @@ formulario.addEventListener('submit', e => {
   e.preventDefault();
   const termino = document.getElementById('busqueda').value.trim().toLowerCase();
   buscarYMostrarCoctel(termino);
-  ocultarSidebarEnMovil();
-});
-
-btnToggleSidebar.addEventListener('click', () => {
-  if (sidebar.classList.contains('visible')) {
-    ocultarSidebarEnMovil();
-  } else {
-    mostrarSidebarEnMovil();
-  }
-});
-
-overlay.addEventListener('click', () => {
-  ocultarSidebarEnMovil();
+  cerrarOffcanvas();
 });
 
 function buscarYMostrarCoctel(nombre) {
@@ -60,10 +44,10 @@ function mostrarCoctel(coctel) {
 
   ingredientesLista.innerHTML = '';
   coctel.ingredientes.forEach(ingrediente => {
-    const item = document.createElement('li');
-    item.classList.add('list-group-item');
-    item.textContent = ingrediente;
-    ingredientesLista.appendChild(item);
+    const li = document.createElement('li');
+    li.classList.add('list-group-item');
+    li.textContent = ingrediente;
+    ingredientesLista.appendChild(li);
   });
 
   resultado.classList.remove('d-none');
@@ -72,13 +56,10 @@ function mostrarCoctel(coctel) {
 function guardarEnHistorial(nombre) {
   let historial = JSON.parse(localStorage.getItem('historialCocteles')) || [];
 
-  // Evitar duplicados
   historial = historial.filter(item => item.toLowerCase() !== nombre.toLowerCase());
 
-  // Agregar al inicio
   historial.unshift(nombre);
 
-  // Limitar historial a 10 elementos
   if (historial.length > 10) historial = historial.slice(0, 10);
 
   localStorage.setItem('historialCocteles', JSON.stringify(historial));
@@ -88,31 +69,59 @@ function guardarEnHistorial(nombre) {
 function cargarHistorial() {
   const historial = JSON.parse(localStorage.getItem('historialCocteles')) || [];
 
-  listaHistorial.innerHTML = '';
+  listaHistorialDesktop.innerHTML = '';
+  listaHistorialMovil.innerHTML = '';
 
   if (historial.length === 0) {
-    listaHistorial.innerHTML = '<li class="list-group-item">No hay búsquedas recientes.</li>';
+    const empty = '<li class="list-group-item">No hay búsquedas recientes.</li>';
+    listaHistorialDesktop.innerHTML = empty;
+    listaHistorialMovil.innerHTML = empty;
     return;
   }
 
   historial.forEach(nombre => {
-    const li = document.createElement('li');
-    li.classList.add('list-group-item', 'list-group-item-action');
-    li.textContent = nombre;
-    li.addEventListener('click', () => {
-      buscarYMostrarCoctel(nombre.toLowerCase());
-      ocultarSidebarEnMovil();
-    });
-    listaHistorial.appendChild(li);
+    const crearItem = (esMovil = false) => {
+      const li = document.createElement('li');
+      li.className = 'list-group-item d-flex justify-content-between align-items-center';
+
+      const span = document.createElement('span');
+      span.textContent = nombre;
+      span.classList.add('flex-grow-1', 'me-2');
+      span.style.cursor = 'pointer';
+      span.addEventListener('click', () => {
+        buscarYMostrarCoctel(nombre.toLowerCase());
+        if (esMovil) cerrarOffcanvas();
+      });
+
+      const btnEliminar = document.createElement('button');
+      btnEliminar.className = 'btn btn-sm btn-outline-danger';
+      btnEliminar.innerHTML = '&times;';
+      btnEliminar.setAttribute('aria-label', 'Eliminar del historial');
+      btnEliminar.addEventListener('click', (e) => {
+        e.stopPropagation();
+        eliminarDelHistorial(nombre);
+      });
+
+      li.appendChild(span);
+      li.appendChild(btnEliminar);
+
+      return li;
+    };
+
+    listaHistorialDesktop.appendChild(crearItem(false));
+    listaHistorialMovil.appendChild(crearItem(true));
   });
 }
 
-function mostrarSidebarEnMovil() {
-  sidebar.classList.add('visible');
-  overlay.classList.add('visible');
+function eliminarDelHistorial(nombre) {
+  let historial = JSON.parse(localStorage.getItem('historialCocteles')) || [];
+  historial = historial.filter(item => item.toLowerCase() !== nombre.toLowerCase());
+  localStorage.setItem('historialCocteles', JSON.stringify(historial));
+  cargarHistorial();
 }
 
-function ocultarSidebarEnMovil() {
-  sidebar.classList.remove('visible');
-  overlay.classList.remove('visible');
+function cerrarOffcanvas() {
+  const offcanvasEl = document.getElementById('offcanvasHistorial');
+  const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
+  if (bsOffcanvas) bsOffcanvas.hide();
 }
