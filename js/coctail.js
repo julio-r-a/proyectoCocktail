@@ -8,7 +8,8 @@ const ingredientesLista = document.getElementById('ingredientes');
 const instrucciones = document.getElementById('instrucciones');
 const listaHistorialDesktop = document.getElementById('lista-historial');
 const listaHistorialMovil = document.getElementById('lista-historial-movil');
-const listaCocteles = document.getElementById('lista-cocteles');
+const listaCoctelesDesktop = document.getElementById('lista-cocteles');
+const listaCoctelesMovil = document.getElementById('lista-cocteles-movil');
 
 fetch('json/cocteles-peruanos.json')
   .then(res => res.json())
@@ -124,20 +125,29 @@ function cerrarOffcanvas() {
 }
 
 function mostrarListaDeCocteles() {
-  if (!listaCocteles) return;
+  if (!listaCoctelesDesktop || !listaCoctelesMovil) return;
 
-  listaCocteles.innerHTML = '';
+  listaCoctelesDesktop.innerHTML = '';
+  listaCoctelesMovil.innerHTML = '';
 
   cocteles
     .sort((a, b) => a.nombre.localeCompare(b.nombre))
     .forEach(coctel => {
-      const btn = document.createElement('button');
-      btn.className = 'list-group-item list-group-item-action';
-      btn.textContent = coctel.nombre;
-      btn.addEventListener('click', () => {
+      const btnDesktop = document.createElement('button');
+      btnDesktop.className = 'list-group-item list-group-item-action';
+      btnDesktop.textContent = coctel.nombre;
+      btnDesktop.addEventListener('click', () => {
         buscarYMostrarCoctel(coctel.nombre.toLowerCase());
         cerrarOffcanvas();
       });
-      listaCocteles.appendChild(btn);
+
+      const btnMovil = btnDesktop.cloneNode(true);
+      btnMovil.addEventListener('click', () => {
+        buscarYMostrarCoctel(coctel.nombre.toLowerCase());
+        cerrarOffcanvas();
+      });
+
+      listaCoctelesDesktop.appendChild(btnDesktop);
+      listaCoctelesMovil.appendChild(btnMovil);
     });
 }
