@@ -10,68 +10,56 @@
 </head>
 <body>
 
-  <!-- Offcanvas para móviles -->
-  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasHistorial" aria-labelledby="offcanvasHistorialLabel">
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasCocteles" aria-labelledby="offcanvasCoctelesLabel">
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasHistorialLabel">Búsquedas</h5>
+      <h5 class="offcanvas-title" id="offcanvasCoctelesLabel">Lista de Cócteles</h5>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
     </div>
     <div class="offcanvas-body p-0">
-      <ul id="lista-historial-movil" class="list-group rounded-0 mb-3"></ul>
-
-      <!-- Acordeón de lista de cócteles en móvil -->
       <div class="accordion" id="accordionCoctelesMovil">
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingListaMovil">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseListaMovil" aria-expanded="false" aria-controls="collapseListaMovil">
+            <button class="accordion-button show" type="button" data-bs-toggle="collapse" data-bs-target="#collapseListaMovil" aria-expanded="true" aria-controls="collapseListaMovil">
               Ver lista de cócteles
             </button>
           </h2>
-          <div id="collapseListaMovil" class="accordion-collapse collapse" aria-labelledby="headingListaMovil" data-bs-parent="#accordionCoctelesMovil">
+          <div id="collapseListaMovil" class="accordion-collapse collapse show" aria-labelledby="headingListaMovil" data-bs-parent="#accordionCoctelesMovil">
             <div class="accordion-body p-0">
               <div id="lista-cocteles-movil" class="list-group list-group-flush"></div>
             </div>
           </div>
         </div>
       </div>
-      
     </div>
   </div>
 
   <div class="container-fluid">
     <div class="row vh-100">
 
-      <!-- Sidebar para escritorio -->
       <nav class="col-md-4 col-lg-3 d-none d-md-block bg-light border-end overflow-auto">
         <div class="p-3">
-          <h4>Búsquedas</h4>
-          <ul id="lista-historial" class="list-group mb-3"></ul>
-
-          <!-- Acordeón de lista de cócteles escritorio -->
           <div class="accordion" id="accordionCoctelesDesktop">
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingListaDesktop">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseListaDesktop" aria-expanded="false" aria-controls="collapseListaDesktop">
+                <button class="accordion-button show" type="button" data-bs-toggle="collapse" data-bs-target="#collapseListaDesktop" aria-expanded="true" aria-controls="collapseListaDesktop">
                   Ver lista de cócteles
                 </button>
               </h2>
-              <div id="collapseListaDesktop" class="accordion-collapse collapse" aria-labelledby="headingListaDesktop" data-bs-parent="#accordionCoctelesDesktop">
+              <div id="collapseListaDesktop" class="accordion-collapse collapse show" aria-labelledby="headingListaDesktop" data-bs-parent="#accordionCoctelesDesktop">
                 <div class="accordion-body p-0">
                   <div id="lista-cocteles" class="list-group list-group-flush"></div>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
       </nav>
 
-      <!-- Contenido principal -->
       <main class="col-12 col-md-8 col-lg-9 px-4 py-3 overflow-auto">
 
         <div class="d-flex align-items-center mb-3">
-          <button class="btn btn-primary d-md-none me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasHistorial" aria-controls="offcanvasHistorial" aria-label="Mostrar historial">
-            ☰ Historial
+          <button class="btn btn-primary d-md-none me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCocteles" aria-controls="offcanvasCocteles" aria-label="Mostrar lista de cócteles">
+            ☰ Lista de Cócteles
           </button>
           <h1 class="h3 m-0">Buscador de Cócteles Peruanos</h1>
         </div>

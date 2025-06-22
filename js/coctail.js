@@ -6,8 +6,6 @@ const nombreCoctel = document.getElementById('nombre-coctel');
 const imagenCoctel = document.getElementById('imagen-coctel');
 const ingredientesLista = document.getElementById('ingredientes');
 const instrucciones = document.getElementById('instrucciones');
-const listaHistorialDesktop = document.getElementById('lista-historial');
-const listaHistorialMovil = document.getElementById('lista-historial-movil');
 const listaCoctelesDesktop = document.getElementById('lista-cocteles');
 const listaCoctelesMovil = document.getElementById('lista-cocteles-movil');
 
@@ -15,7 +13,6 @@ fetch('json/cocteles-peruanos.json')
   .then(res => res.json())
   .then(data => {
     cocteles = data;
-    cargarHistorial();
     mostrarListaDeCocteles();
   });
 
@@ -34,7 +31,6 @@ function buscarYMostrarCoctel(nombre) {
     return;
   }
   mostrarCoctel(coctel);
-  guardarEnHistorial(coctel.nombre);
 }
 
 function mostrarCoctel(coctel) {
@@ -54,72 +50,8 @@ function mostrarCoctel(coctel) {
   resultado.classList.remove('d-none');
 }
 
-function guardarEnHistorial(nombre) {
-  let historial = JSON.parse(localStorage.getItem('historialCocteles')) || [];
-
-  historial = historial.filter(item => item.toLowerCase() !== nombre.toLowerCase());
-  historial.unshift(nombre);
-  if (historial.length > 3) historial = historial.slice(0, 3);
-
-  localStorage.setItem('historialCocteles', JSON.stringify(historial));
-  cargarHistorial();
-}
-
-function cargarHistorial() {
-  const historial = JSON.parse(localStorage.getItem('historialCocteles')) || [];
-
-  listaHistorialDesktop.innerHTML = '';
-  listaHistorialMovil.innerHTML = '';
-
-  if (historial.length === 0) {
-    const empty = '<li class="list-group-item">No hay búsquedas recientes.</li>';
-    listaHistorialDesktop.innerHTML = empty;
-    listaHistorialMovil.innerHTML = empty;
-    return;
-  }
-
-  historial.forEach(nombre => {
-    const crearItem = (esMovil = false) => {
-      const li = document.createElement('li');
-      li.className = 'list-group-item d-flex justify-content-between align-items-center';
-
-      const span = document.createElement('span');
-      span.textContent = nombre;
-      span.classList.add('flex-grow-1', 'me-2');
-      span.style.cursor = 'pointer';
-      span.addEventListener('click', () => {
-        buscarYMostrarCoctel(nombre.toLowerCase());
-        if (esMovil) cerrarOffcanvas();
-      });
-
-      const btnEliminar = document.createElement('button');
-      btnEliminar.className = 'btn btn-sm btn-outline-danger';
-      btnEliminar.innerHTML = '&times;';
-      btnEliminar.setAttribute('aria-label', 'Eliminar del historial');
-      btnEliminar.addEventListener('click', (e) => {
-        e.stopPropagation();
-        eliminarDelHistorial(nombre);
-      });
-
-      li.appendChild(span);
-      li.appendChild(btnEliminar);
-      return li;
-    };
-
-    listaHistorialDesktop.appendChild(crearItem(false));
-    listaHistorialMovil.appendChild(crearItem(true));
-  });
-}
-
-function eliminarDelHistorial(nombre) {
-  let historial = JSON.parse(localStorage.getItem('historialCocteles')) || [];
-  historial = historial.filter(item => item.toLowerCase() !== nombre.toLowerCase());
-  localStorage.setItem('historialCocteles', JSON.stringify(historial));
-  cargarHistorial();
-}
-
 function cerrarOffcanvas() {
-  const offcanvasEl = document.getElementById('offcanvasHistorial');
+  const offcanvasEl = document.getElementById('offcanvasCocteles');
   const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
   if (bsOffcanvas) bsOffcanvas.hide();
 }
