@@ -24,8 +24,16 @@
             </button>
           </h2>
           <div id="collapseListaMovil" class="accordion-collapse collapse show" aria-labelledby="headingListaMovil" data-bs-parent="#accordionCoctelesMovil">
-            <div class="accordion-body p-0">
-              <div id="lista-cocteles-movil" class="list-group list-group-flush"></div>
+            <div class="accordion-body p-3">
+              <input
+                type="search"
+                id="buscador-lista-movil"
+                class="form-control mb-2"
+                placeholder="Buscar cócteles..."
+                autocomplete="off"
+                aria-label="Buscar cócteles"
+              />
+              <div id="lista-cocteles-movil" class="list-group list-group-flush" style="max-height: 300px; overflow-y: auto;"></div>
             </div>
           </div>
         </div>
@@ -46,8 +54,16 @@
                 </button>
               </h2>
               <div id="collapseListaDesktop" class="accordion-collapse collapse show" aria-labelledby="headingListaDesktop" data-bs-parent="#accordionCoctelesDesktop">
-                <div class="accordion-body p-0">
-                  <div id="lista-cocteles" class="list-group list-group-flush"></div>
+                <div class="accordion-body p-3">
+                  <input
+                    type="search"
+                    id="buscador-lista-desktop"
+                    class="form-control mb-2"
+                    placeholder="Buscar cócteles..."
+                    autocomplete="off"
+                    aria-label="Buscar cócteles"
+                  />
+                  <div id="lista-cocteles" class="list-group list-group-flush" style="max-height: 300px; overflow-y: auto;"></div>
                 </div>
               </div>
             </div>

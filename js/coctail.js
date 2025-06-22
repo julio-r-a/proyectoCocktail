@@ -8,12 +8,14 @@ const ingredientesLista = document.getElementById('ingredientes');
 const instrucciones = document.getElementById('instrucciones');
 const listaCoctelesDesktop = document.getElementById('lista-cocteles');
 const listaCoctelesMovil = document.getElementById('lista-cocteles-movil');
+const buscadorDesktop = document.getElementById('buscador-lista-desktop');
+const buscadorMovil = document.getElementById('buscador-lista-movil');
 
 fetch('json/cocteles-peruanos.json')
   .then(res => res.json())
   .then(data => {
     cocteles = data;
-    mostrarListaDeCocteles();
+    mostrarListaDeCocteles(cocteles);
   });
 
 formulario.addEventListener('submit', e => {
@@ -22,6 +24,23 @@ formulario.addEventListener('submit', e => {
   buscarYMostrarCoctel(termino);
   cerrarOffcanvas();
 });
+
+if (buscadorDesktop) {
+  buscadorDesktop.addEventListener('input', e => {
+    filtrarYMostrarLista(e.target.value);
+  });
+}
+if (buscadorMovil) {
+  buscadorMovil.addEventListener('input', e => {
+    filtrarYMostrarLista(e.target.value);
+  });
+}
+
+function filtrarYMostrarLista(texto) {
+  const filtro = texto.trim().toLowerCase();
+  const filtrados = cocteles.filter(c => c.nombre.toLowerCase().includes(filtro));
+  mostrarListaDeCocteles(filtrados);
+}
 
 function buscarYMostrarCoctel(nombre) {
   const coctel = cocteles.find(c => c.nombre.toLowerCase() === nombre);
@@ -56,14 +75,13 @@ function cerrarOffcanvas() {
   if (bsOffcanvas) bsOffcanvas.hide();
 }
 
-function mostrarListaDeCocteles() {
+function mostrarListaDeCocteles(lista) {
   if (!listaCoctelesDesktop || !listaCoctelesMovil) return;
 
   listaCoctelesDesktop.innerHTML = '';
   listaCoctelesMovil.innerHTML = '';
 
-  cocteles
-    .sort((a, b) => a.nombre.localeCompare(b.nombre))
+  lista.sort((a, b) => a.nombre.localeCompare(b.nombre))
     .forEach(coctel => {
       const btnDesktop = document.createElement('button');
       btnDesktop.className = 'list-group-item list-group-item-action';

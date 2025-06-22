@@ -1,3 +1,11 @@
 h1, h2, h3, h4, h5, input, ul, p, #lista-cocteles button {
   font-family: 'Playfair Display', serif;
 }
+#lista-cocteles {
+  max-height: 300px;
+  overflow-y: auto;
+}
+#lista-cocteles-movil {
+  max-height: 300px;
+  overflow-y: auto;
+}
