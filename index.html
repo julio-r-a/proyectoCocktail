@@ -26,7 +26,23 @@
       <nav class="col-md-4 col-lg-3 d-none d-md-block bg-light border-end overflow-auto">
         <div class="p-3">
           <h4>Búsquedas</h4>
-          <ul id="lista-historial" class="list-group"></ul>
+          <ul id="lista-historial" class="list-group mb-3"></ul>
+
+          <div class="accordion" id="accordionCocteles">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingLista">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLista" aria-expanded="false" aria-controls="collapseLista">
+                  Ver lista de cócteles
+                </button>
+              </h2>
+              <div id="collapseLista" class="accordion-collapse collapse" aria-labelledby="headingLista" data-bs-parent="#accordionCocteles">
+                <div class="accordion-body p-0">
+                  <div id="lista-cocteles" class="list-group list-group-flush"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </nav>
 
@@ -41,27 +57,14 @@
 
         <form id="formulario-busqueda" class="mb-4" autocomplete="off">
           <div class="input-group">
-            <input
-              type="text"
-              id="busqueda"
-              class="form-control"
-              placeholder="Introduce el nombre del cóctel (ej. Pisco Sour)"
-              required
-              autocomplete="off"
-            />
+            <input type="text" id="busqueda" class="form-control" placeholder="Introduce el nombre del cóctel (ej. Pisco Sour)" required autocomplete="off" />
             <button type="submit" class="btn btn-primary">Buscar</button>
           </div>
         </form>
 
         <div id="resultado" class="row d-none">
           <div class="col-md-5">
-            <img
-              id="imagen-coctel"
-              src=""
-              class="img-fluid rounded"
-              alt="Imagen del cóctel"
-              loading="lazy"
-            />
+            <img id="imagen-coctel" src="" class="img-fluid rounded" alt="Imagen del cóctel" loading="lazy" />
           </div>
           <div class="col-md-7">
             <h2 id="nombre-coctel"></h2>
@@ -73,7 +76,6 @@
         </div>
 
       </main>
-
     </div>
   </div>
 

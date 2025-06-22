@@ -8,12 +8,14 @@ const ingredientesLista = document.getElementById('ingredientes');
 const instrucciones = document.getElementById('instrucciones');
 const listaHistorialDesktop = document.getElementById('lista-historial');
 const listaHistorialMovil = document.getElementById('lista-historial-movil');
+const listaCocteles = document.getElementById('lista-cocteles');
 
 fetch('json/cocteles-peruanos.json')
   .then(res => res.json())
   .then(data => {
     cocteles = data;
     cargarHistorial();
+    mostrarListaDeCocteles();
   });
 
 formulario.addEventListener('submit', e => {
@@ -25,13 +27,11 @@ formulario.addEventListener('submit', e => {
 
 function buscarYMostrarCoctel(nombre) {
   const coctel = cocteles.find(c => c.nombre.toLowerCase() === nombre);
-
   if (!coctel) {
     resultado.classList.add('d-none');
     alert('Cóctel peruano no encontrado.');
     return;
   }
-
   mostrarCoctel(coctel);
   guardarEnHistorial(coctel.nombre);
 }
@@ -57,10 +57,8 @@ function guardarEnHistorial(nombre) {
   let historial = JSON.parse(localStorage.getItem('historialCocteles')) || [];
 
   historial = historial.filter(item => item.toLowerCase() !== nombre.toLowerCase());
-
   historial.unshift(nombre);
-
-  if (historial.length > 10) historial = historial.slice(0, 10);
+  if (historial.length > 3) historial = historial.slice(0, 3);
 
   localStorage.setItem('historialCocteles', JSON.stringify(historial));
   cargarHistorial();
@@ -104,7 +102,6 @@ function cargarHistorial() {
 
       li.appendChild(span);
       li.appendChild(btnEliminar);
-
       return li;
     };
 
@@ -124,4 +121,23 @@ function cerrarOffcanvas() {
   const offcanvasEl = document.getElementById('offcanvasHistorial');
   const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
   if (bsOffcanvas) bsOffcanvas.hide();
+}
+
+function mostrarListaDeCocteles() {
+  if (!listaCocteles) return;
+
+  listaCocteles.innerHTML = '';
+
+  cocteles
+    .sort((a, b) => a.nombre.localeCompare(b.nombre))
+    .forEach(coctel => {
+      const btn = document.createElement('button');
+      btn.className = 'list-group-item list-group-item-action';
+      btn.textContent = coctel.nombre;
+      btn.addEventListener('click', () => {
+        buscarYMostrarCoctel(coctel.nombre.toLowerCase());
+        cerrarOffcanvas();
+      });
+      listaCocteles.appendChild(btn);
+    });
 }
