@@ -1,7 +1,7 @@
 [
   {
     "nombre": "Pisco Sour",
-    "imagen": "https://media.istockphoto.com/id/1206887058/photo/pisco-sour.jpg?s=2048x2048&w=is&k=20&c=qEisQURPyI8_U4mPHlbTRHXGx6mZzr-zOCllxAxicEg=",
+    "imagen": "img/Pisco Sour – das Original Cocktail Rezept.jpg",
     "ingredientes": [
       "2 oz de pisco",
       "1 oz de jugo de limón",
@@ -14,7 +14,7 @@
   },
   {
     "nombre": "Chilcano",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/0/09/Chilcano_de_pisco_-_Peru.jpg",
+    "imagen": "img/Chilcano.jpg",
     "ingredientes": [
       "2 oz de pisco",
       "1 oz de jugo de limón",
@@ -26,7 +26,7 @@
   },
   {
     "nombre": "Algarrobina",
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Algarrobina_cocktail.jpg",
+    "imagen": "img/Coctel de Algarrobina_ Lambayeque, Perú_.jpg",
     "ingredientes": [
       "2 oz de pisco",
       "1 oz de jarabe de algarrobina",
@@ -36,5 +36,122 @@
       "Hielo"
     ],
     "instrucciones": "Licúa todos los ingredientes con hielo hasta obtener una mezcla cremosa. Sirve en copa y decora si lo deseas."
+  },
+  {
+    "nombre": "Capitán",
+    "imagen": "img/Kick Off the Kentucky Derby with These Cocktails.jpg",
+    "ingredientes": [
+      "2 oz de pisco",
+      "1 oz de vermut rojo",
+      "Hielo",
+      "Cereza o cáscara de naranja (opcional)"
+    ],
+    "instrucciones": "En un vaso mezclador con hielo, combina el pisco y el vermut. Remueve y sirve colado en una copa. Decora al gusto."
+  },
+  {
+    "nombre": "Pisco Tonic",
+    "imagen": "img/descarga.jpg",
+    "ingredientes": [
+      "2 oz de pisco",
+      "Agua tónica",
+      "Rodaja de limón o pepino",
+      "Hielo"
+    ],
+    "instrucciones": "Sirve el pisco en un vaso con hielo, completa con agua tónica y decora con limón o pepino."
+  },
+  {
+    "nombre": "Pisco Punch",
+    "imagen": "img/Pisco Punch Recipe _ Cocktail Society.jpg",
+    "ingredientes": [
+      "2 oz de pisco",
+      "1 oz de jugo de piña",
+      "0.5 oz de jugo de limón",
+      "0.5 oz de jarabe simple",
+      "Hielo"
+    ],
+    "instrucciones": "Agita todos los ingredientes con hielo, sirve colado en un vaso y decora con una rodaja de piña."
+  },
+  {
+    "nombre": "Pisco Mule",
+    "imagen": "img/Moscow Mule Twist_ Perfect Labor Day Cocktails!.jpg",
+    "ingredientes": [
+      "2 oz de pisco",
+      "Jugo de lima",
+      "Ginger beer",
+      "Hielo",
+      "Menta fresca"
+    ],
+    "instrucciones": "En un vaso con hielo, mezcla el pisco, jugo de lima y completa con ginger beer. Decora con menta."
+  },
+  {
+    "nombre": "Pisco Negroni",
+    "imagen": "img/The Pisco Negroni Cocktail Recipe_ A Classic Pisco Cocktail.jpg",
+    "ingredientes": [
+      "1 oz de pisco",
+      "1 oz de vermut rojo",
+      "1 oz de Campari",
+      "Hielo",
+      "Cáscara de naranja"
+    ],
+    "instrucciones": "Combina los ingredientes en un vaso mezclador con hielo. Remueve y sirve con una cáscara de naranja."
+  },
+  {
+    "nombre": "Catedral",
+    "imagen": "img/Pisco Sourgastronomy.jpg",
+    "ingredientes": [
+      "2 oz de pisco",
+      "1 oz de vermut seco",
+      "1 dash de angostura",
+      "Hielo"
+    ],
+    "instrucciones": "Mezcla todos los ingredientes con hielo y sirve colado en una copa de cóctel fría."
+  },
+  {
+    "nombre": "Sol y Sombra",
+    "imagen": "img/Sunrise Cocktail Recipe _ How to Make the perfect Sunrise.jpg",
+    "ingredientes": [
+      "1 oz de pisco",
+      "1 oz de brandy",
+      "Hielo",
+      "Cáscara de naranja (opcional)"
+    ],
+    "instrucciones": "Mezcla el pisco y el brandy en un vaso con hielo. Decora con una cáscara de naranja si deseas."
+  },
+  {
+    "nombre": "Pisco Sunrise",
+    "imagen": "img/Pisco Sunrise.jpg",
+    "ingredientes": [
+      "2 oz de pisco",
+      "Jugo de naranja",
+      "0.5 oz de granadina",
+      "Hielo",
+      "Rodaja de naranja"
+    ],
+    "instrucciones": "Llena un vaso con hielo, vierte el pisco y jugo de naranja. Añade la granadina y deja que se asiente para el efecto degradado."
+  },
+  {
+    "nombre": "Machu Picchu",
+    "imagen": "img/Wunderschönes Arequipa - Tag 2 im Peru Urlaub.jpg",
+    "ingredientes": [
+      "1 oz de granadina",
+      "1 oz de jugo de naranja",
+      "1 oz de licor de menta",
+      "1 oz de pisco",
+      "Hielo"
+    ],
+    "instrucciones": "Vierte en un vaso los ingredientes por capas: granadina, jugo de naranja, pisco y licor de menta para lograr el efecto de colores. No remover."
+  },
+  {
+    "nombre": "Pisco Mojito",
+    "imagen": "img/Pisco Mojito.jpg",
+    "ingredientes": [
+      "2 oz de pisco",
+      "Hojas de menta",
+      "1 oz de jugo de limón",
+      "1 oz de jarabe de azúcar",
+      "Agua con gas",
+      "Hielo"
+    ],
+    "instrucciones": "Macerar la menta con jugo de limón y jarabe. Agregar hielo, pisco y completar con agua con gas. Remover suavemente."
   }
 ]
